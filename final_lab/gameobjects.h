@@ -51,7 +51,6 @@ class Tree: public Gameobject
 public:
     SoundBuffer meow_Buffer;
     Sound meow;
-    bool is_used = false;
     Tree();
     void update(Player* m_Player);
 };
@@ -59,7 +58,19 @@ public:
 class Shop: public Gameobject
 {
 public:
-    bool is_used = false;
     Shop();
     void update(Player* m_Player);
+};
+
+class End : public Gameobject
+{
+public:
+    End();
+};
+
+class House : public Gameobject
+{
+public:
+    House();
+    void update(Player* m_Player, End* m_End);
 };

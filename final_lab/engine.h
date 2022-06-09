@@ -16,6 +16,8 @@ private:
     Player m_Player;
     Tree m_Tree;
     Shop m_Shop;
+    House m_House;
+    End m_End;
 
     void input();
     void update(float dtAsSeconds);

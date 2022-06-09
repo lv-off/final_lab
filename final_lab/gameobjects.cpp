@@ -35,7 +35,7 @@ void Player::stopRight()
 
 void Player::update(float elapsedTime)
 {
-    if (m_RightPressed && 1700 > m_Position.x) //надо поставить ограничение адекватное
+    if (m_RightPressed && 1650 > m_Position.x) //надо поставить ограничение адекватное
     {
         m_Position.x += m_Speed * elapsedTime;
 
@@ -121,4 +121,43 @@ void Shop::update(Player* m_Player)
 
         }
     }
+}
+
+House::House()
+{
+    m_Texture.loadFromFile("house.png");
+    m_Sprite.setTexture(m_Texture);
+
+    m_Position.x = 1800;
+    m_Position.y = 510;
+
+    m_Sprite.setPosition(m_Position);
+
+}
+
+void House::update(Player* m_Player, End* m_End)
+{
+    if (Keyboard::isKeyPressed(Keyboard::F) && m_Player->m_Progress == 3)
+    {
+        if (m_Player->m_Position.x >= m_Position.x - m_Player->m_Texture.getSize().x)
+        {
+            m_Player->m_Progress = 4;
+
+            m_Player->m_Sprite.setScale(0, 0);
+            m_End->m_Sprite.setScale(1, 1);
+
+        }
+    }
+}
+
+End::End()
+{
+    m_Texture.loadFromFile("end.png");
+    m_Sprite.setTexture(m_Texture);
+
+    m_Position.x = 660;
+    m_Position.y = 290;
+
+    m_Sprite.setPosition(m_Position);
+    m_Sprite.setScale(0, 0);
 }
